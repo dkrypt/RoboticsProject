@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+<title>RIA:D&H Matrix</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<style>
+.jumbotron{
+    background-color:#4d4d4d;
+    color:white;
+}
+/* Adds borders for tabs */
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+.nav-tabs {
+    margin-bottom: 0;
+}
+</style>
+
+<div class="page-header">
+<div class="container-fluid">
+<div class="jumbotron">
+<h2>D&H Matrix Transformation</h2>
+<h3>IRIA630</h3>
+<h5>Project by: Deepak Kumar(IEC2014015)</h4>
+</div>
+</div>
+</div>
+</head>
+
+<body>
+	<script >
+           function compute_matrix() {
+
+            var d1 =(document.getElementById('firsta').value);
+            var theta1 = (document.getElementById('seconda').value);
+            var r1 = (document.getElementById('thirda').value);
+            var alpha1 = (document.getElementById('fourtha').value);
+            //********************************************************//
+            var d2 =(document.getElementById('firstb').value);
+            var theta2 = (document.getElementById('secondb').value);
+            var r2 = (document.getElementById('thirdb').value);
+            var alpha2 = (document.getElementById('fourthb').value);
+			//***************************************************//
+			var Ad = parseInt(d1);
+			var At = parseInt(theta1)*3.14/180;;
+			At = At.toFixed(2);
+			var Ar = parseInt(r1);
+			Ar = Ar.toFixed(2);
+			var Aa = parseInt(alpha1)*3.14*180;
+			Aa = Aa.toFixed(2);
+			//***************************************************//
+			var  Bd= parseInt(d2);
+			var Bt = parseInt(theta2)*3.14/180;;
+			Bt = Bt.toFixed(2);
+			var Br = parseInt(r2);
+			Br = Br.toFixed(2);
+			var Ba = parseInt(alpha2)*3.14*180;
+			Ba = Ba.toFixed(2);
+			//***************************************************//
+			var a11 = Math.cos(At);
+			a11 = a11.toFixed(2);
+			var a12 = -Math.sin(At)*Math.cos(Aa);
+			a12 = a12.toFixed(2);
+			var a13 = Math.sin(At)*Math.sin(Aa);
+			a13 = a13.toFixed(2);
+			var a14 = Ar *Math.cos(At);
+			a14 = a14.toFixed(2);
+			var a21 = Math.sin(At);
+			a21 = a21.toFixed(2);
+			var a22 = Math.cos(At)*Math.cos(Aa);
+			a22=a22.toFixed(2);
+			var a23 = Math.cos(At)*Math.sin(Aa);
+			a23 = a23.toFixed(2);
+			var a24 = Ar*Math.sin(At);
+			a24 = a24.toFixed(2);
+			var a31 = 0;
+			var a32 = Math.sin(Aa);
+			a32 = a32.toFixed(2);
+			var a33 = Math.cos(Aa);
+			a33= a33.toFixed(2);
+			var a34 = Ad;
+			var a41 = 0;
+			var a42 =0;
+			var a43 =0;
+			var a44=1;
+            document.getElementById('text-a1').value =+a11 + "\t\t" + a12 + "\t\t" + a13 +"\t\t" + a14 + '\n' + a21 +"\t\t" + a22 + "\t\t" + a23 +"\t\t" + a24 + '\n' + a31 + "\t\t" + a32 + "\t\t" + a33 + "\t\t" +a34 + "\t\t" +'\n'+a41 + "\t\t"+ a42+"\t\t"+ a43 + "\t\t"+ a44 +"\n";
+            //****************************************************************//
+            var b11 = Math.cos(Bt);
+			b11 = b11.toFixed(2);
+			var b12 = -Math.sin(Bt)*Math.cos(Ba);
+			b12 = b12.toFixed(2);
+			var b13 = Math.sin(Bt)*Math.sin(Ba);
+			b13 = b13.toFixed(2);
+			var b14 = Br *Math.cos(Bt);
+			b14 = b14.toFixed(2);
+			var b21 = Math.sin(Bt);
+			b21 = b21.toFixed(2);
+			var b22 = Math.cos(Bt)*Math.cos(Ba);
+			b22=b22.toFixed(2);
+			var b23 = Math.cos(Bt)*Math.sin(Ba);
+			b23 = b23.toFixed(2);
+			var b24 = Br*Math.sin(Bt);
+			b24 = b24.toFixed(2);
+			var b31 = 0;
+			var b32 = Math.sin(Ba);
+			b32 = b32.toFixed(2);
+			var b33 = Math.cos(Ba);
+			b33= b33.toFixed(2);
+			var b34 = Bd;
+			var b41 = 0;
+			var b42 =0;
+			var b43 =0;
+			var b44=1;
+            document.getElementById('text-b1').value =+b11 + "\t\t" + b12 + "\t\t" + b13 +"\t\t" + b14 + '\n' + b21 +"\t\t" + b22 + "\t\t" + b23 +"\t\t" + b24 + '\n' + b31 + "\t\t" + b32 + "\t\t" + b33 + "\t\t" +b34 + "\t\t" +'\n'+b41 + "\t\t"+ b42+"\t\t"+ b43 + "\t\t"+ b44 +"\n";
+
+        }
+    </script>
+<div class="container">
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="jumbotron">
+      <form method="post" Name="dh"><fieldset>
+ 	<legend>
+ 	<h3 style="color: white">D&H Transformation Matrix Calculation</h3>
+ 	</legend>
+ 	<center>
+ 		<div class="input-group input-group-lg">
+  			<span class="input-group-addon">d1</span>
+  			<input type="text" class="form-control" placeholder="d"  id = "firsta" aria-describedby="basic-addon1">
+  			<span class="input-group-addon">d2</span>
+  			<input type="text" class="form-control" placeholder="d"  id = "firstb" aria-describedby="basic-addon1">
+		</div><br>
+		
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon" >&#952;1</span>
+  			<input type="text" class="form-control" placeholder="theta"  id = "seconda" aria-describedby="basic-addon1">
+  			<span class="input-group-addon" >&#952;2</span>
+  			<input type="text" class="form-control" placeholder="theta"  id = "secondb" aria-describedby="basic-addon1">
+  		</div><br>
+  		
+  		<div class="input-group input-group-lg">
+  			<span class="input-group-addon" >r 1</span>
+  			<input type="text" class="form-control" placeholder="r"  id = "thirda" aria-describedby="basic-addon1">
+  			<span class="input-group-addon" >r 2</span>
+  			<input type="text" class="form-control" placeholder="r"  id = "thirdb" aria-describedby="basic-addon1">
+  		</div><br>
+  		
+  		<div class="input-group input-group-lg">
+  			<span class="input-group-addon">&alpha;1</span>
+  			<input type="text" class="form-control" placeholder="alpha"  id = "fourtha" aria-describedby="basic-addon1">
+  			<span class="input-group-addon">&alpha;2</span>
+  			<input type="text" class="form-control" placeholder="alpha"  id = "fourthb" aria-describedby="basic-addon1">
+  		</div><br>
+			
+			<input type="button" value="Compute" class="btn btn-danger" onclick="compute_matrix()">
+			<input type="reset" value="Reset" class="btn btn-danger"></br></br>
+		<div class="form-group">
+    		<label for="exampleTextarea">Transformation Matrix</label>
+    		<textarea class="form-control" id="text-result" rows="10"></textarea>
+  		</div>
+		</center>
+		</fieldset>
+			</form>
+	</div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
+    <blockquote>
+    <p><strong>d</strong> - distance between x<sub>i-1</sub> and x<sub>i</sub>, along the common normal</p>
+    <p><strong>θ</strong> - the angle around the z-axis between the x<sub>i-1</sub> and x<sub>i</sub></p>
+    <p><strong>a</strong> - the length of the common normal</p>
+    <p><strong>α</strong> - the angle between z<sub>i-1</sub> and z<sub>i</sub>, around the common normal</p>
+    </blockquote>
+    <div class="form-group">
+    		<label for="exampleTextarea"><sub>1</sub>T<sup>0</sup></label>
+    		<textarea class="form-control" id="text-a1" rows="8"></textarea>
+  	</div>
+  	 <div class="form-group">
+    		<label for="exampleTextarea"><sub>2</sub>T<sup>1</sup></label>
+    		<textarea class="form-control" id="text-b1" rows="8"></textarea>
+  	</div>
+    </div>
+    <!-- When in sm mode the 3rd column jumps up below the 2nd column. To fix it put the following right before the column that messes up using the screen mode being sm that messes up. -->
+</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.9.3/math.js"></script>
+</body>
+</html>
