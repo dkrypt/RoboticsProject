@@ -120,8 +120,51 @@
 			var b43 =0;
 			var b44=1;
             document.getElementById('text-b1').value =+b11 + "\t\t" + b12 + "\t\t" + b13 +"\t\t" + b14 + '\n' + b21 +"\t\t" + b22 + "\t\t" + b23 +"\t\t" + b24 + '\n' + b31 + "\t\t" + b32 + "\t\t" + b33 + "\t\t" +b34 + "\t\t" +'\n'+b41 + "\t\t"+ b42+"\t\t"+ b43 + "\t\t"+ b44 +"\n";
-
+            //*******************************************************//
+            var t11=a11*b11+a12*b21+a13*b31+a14*b41;
+            t11=t11.toFixed(2);
+            var t12=a11*b12+a12*b22+a13*b32+a14*b42;
+            t12=t12.toFixed(2);
+            var t13=a11*b13+a12*b23+a13*b33+a14*b43;
+            t13=t13.toFixed(2);
+            var t14=a11*b14+a12*b24+a13*b34+a14*b44;
+            t14=t14.toFixed(2);
+            //------//
+            var t21=a21*b11+a22*b21+a23*b31+a24*b41;
+            t21=t21.toFixed(2);
+            var t22=a21*b12+a22*b22+a23*b32+a24*b42;
+            t22=t22.toFixed(2);
+            var t23=a21*b13+a22*b23+a23*b33+a24*b43;
+            t23=t23.toFixed(2);
+            var t24=a21*b14+a22*b24+a23*b34+a24*b44;
+            t24=t24.toFixed(2);
+            //------//
+            var t31=a31*b11+a32*b21+a33*b31+a34*b41;
+            t31=t31.toFixed(2);
+            var t32=a31*b12+a32*b22+a33*b32+a34*b42;
+            t32=t32.toFixed(2);
+            var t33=a31*b13+a32*b23+a33*b33+a34*b43;
+            t33=t33.toFixed(2);
+            var t34=a31*b14+a32*b24+a33*b34+a34*b44;
+            t34=t34.toFixed(2);
+            //------//
+            var t41=a41*b11+a42*b21+a43*b31+a44*b41;
+            t41=t41.toFixed(2);
+            var t42=a41*b12+a42*b22+a43*b32+a44*b42;
+            t42=t42.toFixed(2);
+            var t43=a41*b13+a42*b23+a43*b33+a44*b43;
+            t43=t43.toFixed(2);
+            var t44=a41*b14+a42*b24+a43*b34+a44*b44;
+            t44=t44.toFixed(2);
+            document.getElementById('text-result').value =+t11 + "\t\t" + t12 + "\t\t" + t13 +"\t\t" + t14 + '\n' + t21 +"\t\t" + t22 + "\t\t" + t23 +"\t\t" + t24 + '\n' + t31 + "\t\t" + t32 + "\t\t" + t33 + "\t\t" +t34 + "\t\t" +'\n'+t41 + "\t\t"+ t42+"\t\t"+ t43 + "\t\t"+ t44 +"\n\n\n"+"Final Coordinates :   "+t14+"\t\t"+t24+"\t\t"+t34+"\n";
         }
+
+        function clearText()  
+		{
+    		document.getElementById('text-a1').value = "";
+    		document.getElementById('text-b1').value = "";
+    		document.getElementById('text-result').value = "";
+		}
     </script>
 <div class="container">
 <div class="row">
@@ -161,10 +204,10 @@
   		</div><br>
 			
 			<input type="button" value="Compute" class="btn btn-danger" onclick="compute_matrix()">
-			<input type="reset" value="Reset" class="btn btn-danger"></br></br>
+			<input type="reset" value="Reset" class="btn btn-danger" onclick="clearText()"></br></br>
 		<div class="form-group">
     		<label for="exampleTextarea">Transformation Matrix</label>
-    		<textarea class="form-control" id="text-result" rows="10"></textarea>
+    		<textarea class="form-control" id="text-result" rows="8"></textarea>
   		</div>
 		</center>
 		</fieldset>
